@@ -8,6 +8,12 @@ return {
 			"<leader>s",
 			"<Plug>(nvim-surround-normal)",
 		},
+		{
+			mode = "n",
+			"ds",
+			"<Plug>(nvim-surround-delete",
+			desc = "ds`closing or opening brackets`. This will always delete the previous pair. NOT NEXT PAIR",
+		},
 	},
 	after = function()
 		require("nvim-surround").setup()
