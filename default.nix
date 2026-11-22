@@ -40,13 +40,7 @@ in {
         fileset = fs.fromSource (lib.sources.cleanSource ./nvim);
       };
 
-      # impure = "~/Greenhouse/modules/hjem/users/vsmrf/_config/neovim/nvim";
       impure = lib'.toAbsolutePath ./nvim;
-    };
-    #todo: no idea what this is
-    startAttrs = {
-      nvim-treesitter = null;
-      promise-async = null;
     };
     start =
       builtins.attrValues {
@@ -60,6 +54,7 @@ in {
           ;
       }
       ++ [
+        pkgs.vimPlugins.nvim-treesitter.withAllGrammars
         (pluh.zen-nvim null)
         (pluh.south-nvim null)
       ];
@@ -67,10 +62,10 @@ in {
       builtins.attrValues {
         inherit (pkgs.vimPlugins) conform-nvim;
         inherit (pkgs.vimPlugins) friendly-snippets lspkind-nvim;
-        inherit (pkgs.vimPlugins) nvim-ufo promise-async;
 
         inherit
           (pkgs.vimPlugins)
+          nvim-ufo
           gitsigns-nvim
           bufferline-nvim
           nvim-cokeline
@@ -87,7 +82,6 @@ in {
           ;
       }
       ++ [
-        pkgs.vimPlugins.nvim-treesitter.withAllGrammars
         pkgs.vimPlugins.nvim-treesitter-textobjects
         pkgs.vimPlugins.nvim-treesitter-context
 
