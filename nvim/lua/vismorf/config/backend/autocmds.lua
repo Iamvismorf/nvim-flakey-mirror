@@ -1,13 +1,12 @@
---todo: also allow manual split
-vim.api.nvim_create_autocmd("BufWinEnter", {
-	pattern = "*",
-	callback = function()
-		if vim.bo.filetype == "help" then
-			vim.bo.buflisted = true
-			vim.cmd.only()
-		end
-	end,
-})
+-- vim.api.nvim_create_autocmd("BufWinEnter", {
+-- 	pattern = "*",
+-- 	callback = function()
+-- 		if vim.bo.filetype == "help" then
+-- 			vim.bo.buflisted = true
+-- 			vim.cmd.only()
+-- 		end
+-- 	end,
+-- })
 
 vim.api.nvim_create_autocmd({ "VimLeavePre" }, {
 	callback = function()
