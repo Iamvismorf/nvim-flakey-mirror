@@ -10,9 +10,14 @@ return {
 		},
 		{
 			mode = "n",
-			"ds",
-			"<Plug>(nvim-surround-delete",
+			"<leader>ds",
+			"<Plug>(nvim-surround-delete)",
 			desc = "ds`closing or opening brackets`. This will always delete the previous pair. NOT NEXT PAIR",
+		},
+		{
+			mode = "n",
+			"<leader>rs",
+			"<Plug>(nvim-surround-change)",
 		},
 	},
 	after = function()
