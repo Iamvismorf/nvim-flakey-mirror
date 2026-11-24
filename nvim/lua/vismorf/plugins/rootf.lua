@@ -7,7 +7,7 @@ M.defaults = {
 local cached_roots = {}
 local augroup = vim.api.nvim_create_augroup("vismorf/rootf", {})
 local last_root = nil
-_G.root = nil
+_G.PRoot = nil
 
 function M._enable()
 	local last_dir = nil
@@ -31,9 +31,9 @@ function M._enable()
 				return
 			end
 
-			_G.root = cached_roots[current_file]
+			_G.PRoot = cached_roots[current_file]
 
-			if root == nil then
+			if _G.PRoot == nil then
 				local should_ignore = vim.tbl_contains(M.config.ignoreDirs, function(v)
 					return string.find(parent_dir, v) ~= nil
 				end, { predicate = true })
@@ -41,27 +41,27 @@ function M._enable()
 					return
 				end
 
-				_G.root = vim.fs.find(
+				_G.PRoot = vim.fs.find(
 					M.config.rootmarkers,
 					{ upward = true, path = current_file, stop = vim.fn.expand("~") }
 				)[1]
 
-				if _G.root == nil then
-					_G.root = current_file
+				if _G.PRoot == nil then
+					_G.PRoot = current_file
 					-- return
 				end
-				_G.root = vim.fs.dirname(_G.root)
+				_G.PRoot = vim.fs.dirname(_G.PRoot)
 
-				cached_roots[current_file] = _G.root
+				cached_roots[current_file] = _G.PRoot
 			end
 			last_dir = parent_dir
-			last_root = _G.root
+			last_root = _G.PRoot
 
 			-- vim.fn.chdir(root)
 		end,
 	})
 	vim.api.nvim_create_user_command("Root", function()
-		vim.print(_G.root)
+		vim.print(_G.PRoot)
 	end, {})
 end
 
