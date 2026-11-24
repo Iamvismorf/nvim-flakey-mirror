@@ -8,21 +8,26 @@ return {
 		{
 			"<leader>f",
 			function()
-				require("fzf-lua").files({ cwd = _G.root })
-				vim.api.nvim_echo({ { "seach: " .. _G.root, "MsgArea" } }, false, {})
+				require("fzf-lua").files({ cwd = _G.PRoot })
+				vim.api.nvim_echo({ { "seach: " .. _G.PRoot, "MsgArea" } }, false, {})
 			end,
 		},
 		{
 			"<leader>g",
 			function()
-				require("fzf-lua").live_grep({ cwd = _G.root, resume = true, no_esc = true })
-				vim.api.nvim_echo({ { "grep: " .. _G.root, "MsgArea" } }, false, {})
+				require("fzf-lua").live_grep({ cwd = _G.PRoot, resume = true, no_esc = true })
+				vim.api.nvim_echo({ { "grep: " .. _G.PRoot, "MsgArea" } }, false, {})
 			end,
 		},
 		{
 			"<C-b>",
 			function()
 				require("fzf-lua").buffers({
+					winopts = {
+						preview = {
+							hidden = true,
+						},
+					},
 					actions = { ["ctrl-b"] = function() end },
 					-- fzf_opts = { ["--header-lines"] = 0 },
 				})
