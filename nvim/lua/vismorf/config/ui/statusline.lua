@@ -1,3 +1,4 @@
+--todo: better folder/filename
 local group = vim.api.nvim_create_augroup("vismorf/statusline", {})
 StatusLine = {}
 

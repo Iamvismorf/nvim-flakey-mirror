@@ -1,3 +1,4 @@
+-- todo: keybinds for cnext, cprev
 -- remap means if a key you map to is itself mapped to something else, that second mapping will also trigger.
 local map = function(mode, lhs, rhs, opts)
 	if type(lhs) == "table" then
@@ -14,7 +15,8 @@ local group = vim.api.nvim_create_augroup("cmdwindow", {})
 -- sadge not planned see: https://github.com/neovim/neovim/issues/30340#event-27478325978
 map("n", { ":", ";" }, "q:i")
 map("n", "<esc>", function()
-	if vim.fn.getcmdwintype() ~= "" then
+	local win_info = vim.fn.getwininfo(vim.api.nvim_get_current_win())[1]
+	if vim.fn.getcmdwintype() ~= "" or win_info.quickfix == 1 then
 		vim.cmd.close()
 	elseif vim.v.hlsearch == 1 then
 		vim.cmd.noh()

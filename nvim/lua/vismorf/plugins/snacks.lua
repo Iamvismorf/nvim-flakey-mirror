@@ -1,3 +1,4 @@
+--todo: `faf` <esc> doesn't work
 return {
 	"snacks.nvim",
 	after = function()

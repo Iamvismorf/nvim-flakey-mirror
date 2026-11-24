@@ -1,3 +1,5 @@
+-- todo: shit is stashed
+-- todo: fork this because "bufferswitch". Fix onSuccess
 -- motherfucker, don't delete this again
 vim.api.nvim_create_autocmd("VimEnter", {
 	callback = function()

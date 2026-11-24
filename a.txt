@@ -1,0 +1,33 @@
+   7     1    0 ### Try without installing | getjumplist[2] | #1 i + 1
+   6    34    0 default.nix
+   5     1    0 default.nix
+   4    20    6 default.nix #3
+   3     1    0 ~/Greenhouse/modules/hjem/users/vsmrf/_config/neovim/flake.nix #2
+-> 2    11    0 ~/Greenhouse/modules/hjem/users/vsmrf/_config/neovim/flake.nix #2
+   1    30    0 ``` #1 
+>  0     9    0 inputs.nvim-flakey = { #1 
+ jump line  col file/text
+
+i = 8
+j = 6
+i - j
+8 - 6 = 2 #jumps req
+
+{
+   {
+      bufnr,
+      row,
+      col,
+      j = i - j the smaller j the most recent
+   };
+}
+
+ 1              1
+ 3              3
+ 3              1
+ 2              2
+>1             >1
+
+2
+1
+2
