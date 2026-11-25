@@ -35,10 +35,11 @@ vim.api.nvim_create_autocmd("BufLeave", {
 	end,
 })
 vim.on_key(function(key, _)
+	local buf_before = vim.api.nvim_win_get_buf(0)
 	vim.schedule(function()
 		local hr_key = vim.fn.keytrans(key)
 		local buf = vim.api.nvim_win_get_buf(0)
-		if hr_key == "<Tab>" or hr_key == "<C-O>" then -- ctrl+i and ctrl+o
+		if (hr_key == "<Tab>" or hr_key == "<C-O>") and buf ~= buf_before then -- ctrl+i and ctrl+o
 			vim.api.nvim_win_set_cursor(0, _G.Last_cursor_positions[buf].cursor)
 		end
 	end)
